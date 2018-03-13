@@ -3,8 +3,9 @@ solomon585858 Infra repository
 
 ## IP addresses for bastion host and someinternalhost
 ***
-*bastion_IP = 35.187.31.144 <br />
-someinternalhost_IP=10.132.0.3*
+bastion_IP=35.187.31.144
+***
+someinternalhost_IP=10.132.0.3
 ***
 ## Connection to someinternalhost using one command
 *ssh -o ProxyCommand='ssh -W %h:%p volshebnik1985@35.187.31.144' volshebnik1985@10.132.0.3*
