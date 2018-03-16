@@ -51,7 +51,7 @@ sudo systemctl start mongod
 sudo systemctl enable mongod
 
 
-cd /home/appuser/
+cd /home/volshebnik1985/
 git clone -b monolith https://github.com/express42/reddit.git
   if [ $? -eq 0 ]; then
     echo "Command executed successfully!"
