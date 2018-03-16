@@ -25,15 +25,22 @@ someinternalhost_IP=10.132.0.3
 ***
 3. Connect to internal host using *ssh internalhost* command <br />
 
-##Cloud-testapp configuration
+## Cloud-testapp configuration
+***
 reddit-app_IP = 35.205.94.85
+***
 testapp_IP = 35.205.94.85
+***
 testapp_PORT = 9292
+***
 install_ruby.sh - Ruby installation script
+***
 install_mongodb.sh - Mongodb installation script
+***
 deploy.sh - Puma installation script
+***
 startup_script.sh - Puma automatic installation and deployment script
-
+***
 ## Create instance using gcloud startup_script
 gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --metadata-from-file startup-script=startup_script.sh
 
