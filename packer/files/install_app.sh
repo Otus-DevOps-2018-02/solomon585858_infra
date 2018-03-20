@@ -25,6 +25,14 @@ puma -d
     exit 1
   fi
 
+puma -d
+  if [ $? -eq 0 ]; then
+    echo "Command executed successfully!"
+  else
+    echo "Command puma -d completed with error. FAIL!!!"
+    exit 1
+  fi
+
 ps aux |grep -v grep | grep -q puma
   if [ $? -eq 0 ]; then
     echo "Puma started successfully"
