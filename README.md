@@ -51,3 +51,24 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
 ## Add firefall rule using gcloud
 gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags=puma-server
 
+## How to validate ubuntu16.json template
+~/packer validate ubuntu16.json
+
+## How to create image from ubuntu16.json tempplate
+~/packer build ubuntu16.json
+
+## How to validate variables.json.example template
+~/packer validate -var 'project_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' variables.json.example
+
+## How to create image from variables.json.example template
+~/packer build -var 'project_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' variables.json.example
+
+## How to validate immutable.json template
+~/packer validate -var 'project_id=infra-197906' -var 'source_image_family-ubuntu-1604-lts' immutable.json
+
+## How to create image from immutable.json template
+~/packer build -var 'proejct_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' immutable.json
+
+## How to create imstance using gcloud from reddit-full image
+gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-server --restart-on-failure --zone europe-west1-b --image reddit-full-15116081511
+
