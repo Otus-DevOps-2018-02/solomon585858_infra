@@ -70,5 +70,5 @@ gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --targ
 ~/packer build -var 'proejct_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' immutable.json
 
 ## How to create imstance using gcloud from reddit-full image
-gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-server --restart-on-failure --zone europe-west1-b --image reddit-full-15116081511
+gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-server --restart-on-failure --zone europe-west1-b --image reddit-full-1511608151
 
