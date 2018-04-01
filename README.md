@@ -74,9 +74,9 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
 
 ## Output variables for terraform
 ***
-app_external_ip - IP address for microservices
+app_external_addresses
 ***
-gcb_lb_external_ip - IP address for Load Balancer GCP
+lb_external_ip
 ***
 ## How to check configuration files, launch microservices and Load Balancer in Terraform
 ***
@@ -85,4 +85,4 @@ terraform plan
 terraform apply
 ***
 ## How to access application using GCP Load Balancer
-Use IP address in gcp_lb_external_ip variable
+Use IP address in lb_external_ip variable
