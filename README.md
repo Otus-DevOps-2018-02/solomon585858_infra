@@ -74,7 +74,7 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
 
 ## Output variables for terraform
 ***
-app_external_addresses
+app_external_ip
 ***
 lb_external_ip
 ***
