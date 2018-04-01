@@ -68,16 +68,8 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags = ["reddit-app"]
 }
 
-# Новые ключи заменяют существующие
 resource "google_compute_project_metadata" "default" {
-  key   = "ssh-keys"
-  value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
+  metadata {
+    ssh-keys = "appuser1:${file(var.public_key_path)} appuser2:${file(var.public_key_path)}"
+  }
 }
-
-# При таком способе добавления ключей новые ключи не добавляются при наличии существующих ключей
-# resource "google_compute_project_metadata_item" "default" {
-#  metadata {
-#    ssh-keys = "appuser1:${file(var.public_key_path)}\nappuser2:${(file(var.public_key_path)}"
-#  }
-#}
-
