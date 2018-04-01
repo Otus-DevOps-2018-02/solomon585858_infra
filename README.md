@@ -72,3 +72,17 @@ gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --targ
 ## How to create imstance using gcloud from reddit-full image
 gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-server --restart-on-failure --zone europe-west1-b --image reddit-full-1511608151
 
+## Output variables for terraform
+***
+app_external_ip - IP address for microservices
+***
+gcb_lb_external_ip - IP address for Load Balancer GCP
+***
+## How to check configuration files, launch microservices and Load Balancer in Terraform
+***
+terraform plan
+***
+terraform apply
+***
+## How to access application using GCP Load Balancer
+Use IP address in gcp_lb_external_ip variable
