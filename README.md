@@ -1,16 +1,16 @@
-## solomon585858_infra
+#### solomon585858_infra
 solomon585858 Infra repository
 
-## IP addresses for bastion host and someinternalhost
+#### IP addresses for bastion host and someinternalhost
 ***
 bastion_IP=35.187.31.144
 ***
 someinternalhost_IP=10.132.0.3
 ***
-## Connection to someinternalhost using one command
+#### Connection to someinternalhost using one command
 *ssh -o ProxyCommand='ssh -W %h:%p volshebnik1985@35.187.31.144' volshebnik1985@10.132.0.3*
 
-## Connection to someinternalhost using ssh internalhost
+#### Connection to someinternalhost using ssh internalhost
 1. Create *~/.ssh/config* file <br />
 2. Add following lines to *config* file:
 ***
@@ -25,7 +25,7 @@ someinternalhost_IP=10.132.0.3
 ***
 3. Connect to internal host using *ssh internalhost* command <br />
 
-## Cloud-testapp configuration
+#### Cloud-testapp configuration
 ***
 reddit-app_IP = 35.205.94.85
 ***
@@ -41,34 +41,45 @@ deploy.sh - Puma installation script
 ***
 startup_script.sh - Puma automatic installation and deployment script
 ***
-## Create instance using gcloud startup_script
+#### Create instance using gcloud startup_script
 gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --metadata-from-file startup-script=startup_script.sh
 
-## Create instance using gcloud startup-script-url
+#### Create instance using gcloud startup-script-url
 gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --metadata startup-script-url="https://gist.githubusercontent.com/solomon585858/2e35266f4ef92e17dd3164070c1f22e0/raw/3f43846eeda762c0cf46bcd709ff883591ab91f0/startup_script.sh"
 
 
-## Add firefall rule using gcloud
+#### Add firefall rule using gcloud
 gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags=puma-server
 
-## How to validate ubuntu16.json template
+#### How to validate ubuntu16.json template
 ~/packer validate ubuntu16.json
 
-## How to create image from ubuntu16.json tempplate
+#### How to create image from ubuntu16.json tempplate
 ~/packer build ubuntu16.json
 
-## How to validate variables.json.example template
+#### How to validate variables.json.example template
 ~/packer validate -var 'project_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' variables.json.example
 
-## How to create image from variables.json.example template
+#### How to create image from variables.json.example template
 ~/packer build -var 'project_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' variables.json.example
 
-## How to validate immutable.json template
+#### How to validate immutable.json template
 ~/packer validate -var 'project_id=infra-197906' -var 'source_image_family-ubuntu-1604-lts' immutable.json
 
-## How to create image from immutable.json template
+#### How to create image from immutable.json template
 ~/packer build -var 'proejct_id=infra-197906' -var 'source_image_family=ubuntu-1604-lts' immutable.json
 
-## How to create imstance using gcloud from reddit-full image
+#### How to create imstance using gcloud from reddit-full image
 gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-server --restart-on-failure --zone europe-west1-b --image reddit-full-1511608151
+
+## ДЗ 7. Terraform
+##### В процессе сделано:
+ - Был установлен **Terraform** на рабочую машину
+ - В папке terraform были созданы конфигурационные файлы с расширением **.tf** для запуска шаблона
+ - Были продекларированы входные переменные в файле **variables.tf** и выходные в **outputs.tf**
+ - Были добавлены рабочие файлы в файл **.gitignore**
+ - Была создана папка **terraform/files**, в которую были размещены скрипт для развертывания  приложения и **systemd unit**
+ - Была проверена корректность выполнения приложения **Terraform** по созданию и изменению инфраструктуры с последующим деплоем приложения
+ - Для задания со * была проверена работа **Terraform** по созданию метаданных проекта с помощью ssh ключей (при использовании **google_compute_project_metadata_item** все ключи заменяются Terraform-ом, при использовании **google_compute_project_metadata** ключи не добавляются при наличии созданных ключей)
+ - Для задания с ** в конфигурацию был добавлен Load Balancer и проверена создание нескольких инстансов с помощью **count**
 
