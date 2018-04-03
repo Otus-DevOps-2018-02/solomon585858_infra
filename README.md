@@ -91,6 +91,10 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Была создана конфигурация для bucket в GCS - **storage-bucket.tf**
 
 ## ДЗ 9. Ansible
+
+ - [x] Основное ДЗ
+ - [x] Задание со *
+
 #### В процессе сделано:
  - Были проинсталлированы **WSL**, **Ubuntu** на **WSL**, **python**, **pip** и **ansible**
  - Была создана инфраструктура **stage**
@@ -120,5 +124,5 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
  - Протестировать работу скрипта **inventory.py** можно с помощью команды **ansible all -i inventory.py -m ping**
 
 #### PR checklist
- - Выставил label **Homework-9** с номером домашнего задания
- - Выставил label **ansible** с номером домашнего задания
+ - [x] Выставил label **Homework-9** с номером домашнего задания
+ - [x] Выставил label **Ansible** с номером домашнего задания
