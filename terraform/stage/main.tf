@@ -6,7 +6,7 @@ provider "google" {
 
 module "vpc" {
   source        = "../modules/vpc"
-  source_ranges = ["0.0.0.0"]
+  source_ranges = ["${var.our_external_subnet}"]
 }
 
 module "app" {
