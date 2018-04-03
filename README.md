@@ -91,5 +91,33 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Была создана конфигурация для bucket в GCS - **storage-bucket.tf**
 
 ## ДЗ 9. Ansible
+#### В процессе сделано:
+ - Были проинсталлированы **WSL**, **Ubuntu** на **WSL**, **python**, **pip** и **ansible**
+ - Была создана инфраструктура **stage**
+ - Был создан файл **inventory** для ansible, в который были добавлены текущие инстансы для **app** и **db**
+ - Была протестирована доступность инстансов с помощью **inventory** 
+ - Был создан файл **ansible.cfg** для ansible в целях упрощения работы с **inventory**
+ - Была протестирована работа с группой хостов с помощью **inventory**
+ - Был создан файл для ansible - **inventory.yml**
+ - Была протестирована работа с группой хостов с помощью **inventory.yml**
+ - Было протестировано выполнение команд на инстансах с помощью модулей **command**, **shell**, **systemd**, **service**, **git**
+ - Был написан ansible playbook **clone.yml** и протестирована его работа
+ - После удаления папки reddit и запуске **clone.yml** playbook-а мы видим статус **changed**, который сигнализирует, чт
+о произошли изменения. Все tasks в ansible должны быть idempotent. Если task не модифицирует что-либо, то он должен возв
+ращать статус **ok**, а не **changed**
 
- - После удаления папки reddit и запуске **clone.yml** playbook-а мы видим статус **changed**, который сигнализирует, что произошли изменения. Все tasks в ansible должны быть idempotent. Если task не модифицирует что-либо, то он должен возвращать статус **ok**, а не **changed**. 
+#### Как запустить проект:
+ - Запустить создание инфраструктуры **stage** можно с помощью команды **terraform apply** из папки **/stage**
+
+#### Как проверить работоспособность: 
+ - Протестировать доступ до appserver можно с помощью команды **ansible appserver -i inventory -m ping**
+ - Протестировать доступ до dbserver можно с помощью команды **ansible dbserver -i inventory -m ping**
+ - Протестировать доступ до всех серверов можно с помощью команды **ansible all -m ping**
+ - Протестировать запуск playbook **clone.yml** можно с помощью команды **ansible-playbook clone.yml**
+ - Проверить статус сервиса **mongod** на инстансе **db** можно одним из этих способов - **ansible db -m command -a 'sys
+temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, **ansible db -m systemd -a name=mongod**,
+ **ansible db -m service -a name=mongod**
+
+#### PR checklist
+ - Выставил label Homework-9 с номером домашнего задания
+ - Выставил label ansible с номером домашнего задания
