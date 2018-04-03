@@ -90,3 +90,6 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Были созданы два окружения **stage** и **prod**
  - Была создана конфигурация для bucket в GCS - **storage-bucket.tf**
 
+## ДЗ 9. Ansible
+
+ - После удаления папки reddit и запуске **clone.yml** playbook-а мы видим статус **changed**, который сигнализирует, что произошли изменения. Все tasks в ansible должны быть idempotent. Если task не модифицирует что-либо, то он должен возвращать статус **ok**, а не **changed**. 
