@@ -117,5 +117,5 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
  **ansible db -m service -a name=mongod**
 
 #### PR checklist
- - Выставил label Homework-9 с номером домашнего задания
- - Выставил label ansible с номером домашнего задания
+ - Выставил label **Homework-9** с номером домашнего задания
+ - Выставил label **ansible** с номером домашнего задания
