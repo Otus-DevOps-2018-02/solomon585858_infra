@@ -103,6 +103,8 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Было протестировано выполнение команд на инстансах с помощью модулей **command**, **shell**, **systemd**, **service**, **git**
  - Был написан ansible playbook **clone.yml** и протестирована его работа
  - После удаления папки **reddit** и запуска **clone.yml** playbook-а мы видим статус **changed**, который сигнализирует, что произошли изменения. Все tasks в ansible должны быть idempotent. Если task не модифицирует что-либо, то он должен возвращать статус **ok**, а не **changed**
+ - Был добавлен скрипт на python - **inventory.py**, который используется для dynamic inventory
+
 
 #### Как запустить проект:
  - Запустить создание инфраструктуры **stage** можно с помощью команды **terraform apply** из папки **/stage**
@@ -115,6 +117,7 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Проверить статус сервиса **mongod** на инстансе **db** можно одним из этих способов - **ansible db -m command -a 'sys
 temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, **ansible db -m systemd -a name=mongod**,
  **ansible db -m service -a name=mongod**
+ - Протестировать работу скрипта **inventory.py** можно с помощью команды **ansible all -i inventory.py -m ping**
 
 #### PR checklist
  - Выставил label **Homework-9** с номером домашнего задания
