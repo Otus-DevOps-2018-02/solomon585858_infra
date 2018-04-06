@@ -83,3 +83,10 @@ gcloud compute instances create reddit-app --machine-type=g1-small --tags puma-s
  - Для задания со * была проверена работа **Terraform** по созданию метаданных проекта с помощью ssh ключей (при использовании **google_compute_project_metadata_item** все ключи заменяются Terraform-ом, при использовании **google_compute_project_metadata** ключи не добавляются при наличии созданных ключей)
  - Для задания с ** в конфигурацию был добавлен Load Balancer и проверена создание нескольких инстансов с помощью **count**
 
+## ДЗ 8. Terraform 2
+#### В процессе сделано:
+ - Были созданы два шаблона для создания образа в packer (**app.json**, **db.json**)
+ - Были созданы конфигурации для app и db
+ - Были созданы два окружения **stage** и **prod**
+ - Была создана конфигурация для bucket в GCS - **storage-bucket.tf**
+
