@@ -1,6 +1,6 @@
 {
   "variables": {
-    "project_id": "infra-197906",
+    "project_id": "{{user `project_id`}}",
     "zone": "europe-west1-b",
     "machine_type": "f1-micro",
     "image_family": "reddit-db-base",
