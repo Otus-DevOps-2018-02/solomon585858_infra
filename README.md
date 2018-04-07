@@ -129,7 +129,7 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 
 ## ДЗ 10. Ansible 2
 
- - [x] Основное ДЗ
+ - [ ] Основное ДЗ
  - [ ] Задание со *
 
 #### В процессе сделано:
