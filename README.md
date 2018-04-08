@@ -126,3 +126,36 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 #### PR checklist
  - [x] Выставил label **Homework-9** с номером домашнего задания
  - [x] Выставил label **Ansible** с номером домашнего задания
+ 
+## ДЗ 10. Ansible 2
+
+ - [x] Основное ДЗ
+ - [x] Задание со *
+
+#### В процессе сделано:
+ - Была добавлена строка в **.gitignore** для того. чтобы не запушить в репоизторий временные файлы
+ - Был создан playbook **reddit_app.yml** с одним сценарием для управления конфигурацией обоих хостов (приложения и бд), который впоследствии был переименован в **reddit_app_one_play.yml**
+ - Был создан playbook **reddit_app2.yml**. В него было прописано несколько сценариев (plays), в которые были объединены задачи, относящиеся к используемым в плейбуке тегам. Playbook впоследствии был переименован в впоследствии был переименован в **reddit_app_multiple_plays_yml**
+ - Все playbooks (**reddit_app.yml** и **reddit_app2.yml**) были проверены на базе **stage** инфраструктуры
+ - Были созданы playbooks **app.yml (настройка хоста приложения)**, **db.yml (настройка БД)**, **deploy.yml (для деплоя)**, а также файл **site.yml** для управления конфигурацией всей инфраструктуры. Инструкция **include** была заменена на *import_playbook** в **site.yml**
+ - Все playbooks (**app.yml**, **db.yml**, **deploy.yml**, **site.yml** были проверены на базе **stage** инфраструктуры
+ - Были созданы playbooks **packer_app.yml** и **packer_db.yml**, которые были использованы для изменения **Provision** в образах **packer/app.json** и **pacer/db.json**
+ - На базе новых образов был проверен build образов с помощью **packer**, создание **stage** инфраструктуры. конфиуграция и деплой окружения с помощью **site.yml**
+ - В задании со * **dynamic inventory** было реализовано с помощью скриптов **dyn_inventory.sh**, **yatadis.py (https://raw.githubusercontent.com/wtsi-hgi/yatadis/master/yatadis/yatadis.py)**. Использование скрипта **dyn_inventory.sh** было добавлено в **ansible.cfg**.
+
+#### Как запустить проект:
+ - После запуска **stage** инфраструктуры и  playbooks приложение должно быть доступно по адресу **http://35.187.45.148:9292/**
+ - Для проверки работы **dynamic inventory** нужно закомментировать в **ansible.cfg** строку *inventory = ./inventory* и раскомментировать строку *inventory = ./dyn_inventory.sh*
+
+#### Как проверить работоспособность:
+ - Проверить playbook для группы хостов **db** можно командой **ansible-playbook reddit_app.yml --check --limit db**
+ - Запустить playbook для группы хостов **db** можно командой **ansible-playbook reddit_app.yml --limit db**
+ - Проверить playbook для группы хостов **app** с тэгами **app-tag** можно командой ansible-playbook reddit_app.yml --check --limit app --tags app-tag**
+ - Запустить playbook для группы хостов **app** с тэгами **app-tag** можно командой ansible-playbook reddit_app.yml  --limit app --tags app-tag**
+ - Пересоздать **stage** инфраструктуру можно с помощью команд **terraform destroy** и **terraform apply -auto-approve=false**
+ - Проверить группу playbooks на базе **site.yml** можно командой **ansible-playbook site.yml --check**
+ - Запустить группу playbooks на базе **site.yml** можно командой **ansible-playbook site.yml**
+
+#### PR checklist
+ - [x] Выставил label **Homework-10** с номером домашнего задания
+ - [x] Выставил label **Ansible** с номером домашнего задания 
