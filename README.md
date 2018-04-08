@@ -130,7 +130,7 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 ## ДЗ 10. Ansible 2
 
  - [x] Основное ДЗ
- - [ ] Задание со *
+ - [x] Задание со *
 
 #### В процессе сделано:
  - Была добавлена строка в **.gitignore** для того. чтобы не запушить в репоизторий временные файлы
@@ -141,9 +141,11 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
  - Все playbooks (**app.yml**, **db.yml**, **deploy.yml**, **site.yml** были проверены на базе **stage** инфраструктуры
  - Были созданы playbooks **packer_app.yml** и **packer_db.yml**, которые были использованы для изменения **Provision** в образах **packer/app.json** и **pacer/db.json**
  - На базе новых образов был проверен build образов с помощью **packer**, создание **stage** инфраструктуры. конфиуграция и деплой окружения с помощью **site.yml**
+ - В задании со * **dynamic inventory** было реализовано с помощью скриптов **dyn_inventory.sh**, **yatadis.py (https://raw.githubusercontent.com/wtsi-hgi/yatadis/master/yatadis/yatadis.py)**. Использование скрипта **dyn_inventory.sh** было добавлено в **ansible.cfg**.
 
 #### Как запустить проект:
  - После запуска **stage** инфраструктуры и  playbooks приложение должно быть доступно по адресу **http://35.187.45.148:9292/**
+ - Для проверки работы **dynamic inventory** нужно закомментировать в **ansible.cfg** строку *inventory = ./inventory* и раскомментировать строку *inventory = ./dyn_inventory.sh*
 
 #### Как проверить работоспособность:
  - Проверить playbook для группы хостов **db** можно командой **ansible-playbook reddit_app.yml --check --limit db**
@@ -157,3 +159,4 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 #### PR checklist
  - [x] Выставил label **Homework-10** с номером домашнего задания
  - [x] Выставил label **Ansible** с номером домашнего задания
+
