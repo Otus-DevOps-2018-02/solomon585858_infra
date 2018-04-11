@@ -179,8 +179,8 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 
 #### Как проверить работоспособность:
  - Пересоздать **stage** инфраструктуру можно с помощью команд **terraform destroy** и **terraform apply -auto-approve=false**
- - Проверку и создание **stage** окружения можно выполнить с помощью команд **ansible-playbook playbooks/site.yml --check** и **ansible-playbook playbooks/site.yml**
- - Проверку и создание **prod** окружения можно выполнить с помощью команд **ansible-playbook -i environments/prod/inventory playbooks/site.yml --check** и **ansible-playbook -i environments/prod/inventory playbooks/site.yml**
+ - Проверку настройки **stage** окружения можно выполнить с помощью команд **ansible-playbook playbooks/site.yml --check** и **ansible-playbook playbooks/site.yml**
+ - Проверку настройки **prod** окружения можно выполнить с помощью команд **ansible-playbook -i environments/prod/inventory playbooks/site.yml --check** и **ansible-playbook -i environments/prod/inventory playbooks/site.yml**
  - Проверку шифрования файлов для окружений **stage** и **prod** можно выполнить с помощью команд **ansible-vault encrypt environments/prod/credentials.yml** и **ansible-vault encrypt environments/stage/credentials.yml**
  
 #### PR checklist
