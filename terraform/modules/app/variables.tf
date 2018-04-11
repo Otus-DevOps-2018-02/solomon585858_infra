@@ -19,13 +19,3 @@ variable app_disk_image {
 variable reddit_db_addr {
   description = "Internal Mongo DB ip address"
 }
-
-variable nginx_port {
-  description = "Nginx port"
-  default     = ["80"]
-}
-
-variable access_to_nginx_from {
-  description = "Source ip access to nginx"
-  default     = ["0.0.0.0/0"]
-}
