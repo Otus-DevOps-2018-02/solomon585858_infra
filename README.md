@@ -164,6 +164,7 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 
  - [x] Основное ДЗ
  - [x] Задание со *
+ - [x] Задание со **
 
 #### В процессе сделано:
  - Были созданы роли для конфигурации Mongo DB (**db.yml**) и для управления конфигурацией приложения (**app.yml**)
@@ -174,6 +175,7 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
  - Была установлена комьюнити роль **jdauphant.nginx** с помощью утилиты **ansible-galaxy**, добавлено открытие 80 порта в конфигурации терраформа, добавлен вызов роли **jdauphant.nginx** в playbook **app.yml**
  - Был протестирован механизм **Ansible Vault**, в рамках которого был создан улюч **vault.key**, изменен файл **ansible.cfg**, добавлен playbook для создания пользователей **users.yml**, созданы файлы с данными пользователей для окружений **stage** и **prod**
  - В задании со * **dynamic inventory** для **prod** и **stage** окружений было реализовано с помощью скриптов **dyn_inventory.sh**, **yatadis.py**, которые были добавлены в свои окружения.
+ - В задании с ** в **.travis.yml** были добавлены проверки **packer validate** для всех шаблонов, **terraform validate** и **tflint** для окружений stage и prod, **ansible-lint** для плейбуков ansible
 
 #### Как запустить проект:
  - После запуска **stage** инфраструктуры и playbooks приложение должно быть доступно по адресу **http://IPaddressOFApplication:80/**
@@ -189,3 +191,5 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 #### PR checklist
  - [x] Выставил label **Homework-11** с номером домашнего задания
  - [x] Выставил label **Ansible** с номером домашнего задания
+ 
+ [![Build Status](https://travis-ci.org/Otus-DevOps-2018-02/solomon585858_infra.svg?branch=ansible-3)](https://travis-ci.org/Otus-DevOps-2018-02/solomon585858_infra)
