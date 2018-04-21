@@ -158,4 +158,34 @@ temctl status mongod'**, **ansible db -m shell -a 'systemctl status mongod'**, *
 
 #### PR checklist
  - [x] Выставил label **Homework-10** с номером домашнего задания
- - [x] Выставил label **Ansible** с номером домашнего задания 
+ - [x] Выставил label **Ansible** с номером домашнего задания
+
+## ДЗ 11. Ansible 3
+
+ - [x] Основное ДЗ
+ - [x] Задание со *
+
+#### В процессе сделано:
+ - Были созданы роли для конфигурации Mongo DB (**db.yml**) и для управления конфигурацией приложения (**app.yml**)
+ - Были созданы два окружения **stage** и **prod** в директории **ansible/environments**
+ - Были созданы настройки окружений **stage** и **prod** с помощью групповых переменных **group_vars**
+ - Были реорганизованы файлы и папки в каталоге **ansible**: в директорию **playbooks** были перенесены все playbooks, в директорию **old** были перенесены оставшиеся файлы, а в папке **ansible** были оставлены файлы **ansible.cfg** и **requrements.txt**
+ - Были внесены изменения в **ansible.cfg** (явно было указано где роли, выключено создание **.retry** файлов, настроен показ дифф при изменениях)
+ - Была установлена комьюнити роль **jdauphant.nginx** с помощью утилиты **ansible-galaxy**, добавлено открытие 80 порта в конфигурации терраформа, добавлен вызов роли **jdauphant.nginx** в playbook **app.yml**
+ - Был протестирован механизм **Ansible Vault**, в рамках которого был создан улюч **vault.key**, изменен файл **ansible.cfg**, добавлен playbook для создания пользователей **users.yml**, созданы файлы с данными пользователей для окружений **stage** и **prod**
+ - В задании со * **dynamic inventory** для **prod** и **stage** окружений было реализовано с помощью скриптов **dyn_inventory.sh**, **yatadis.py**, которые были добавлены в свои окружения.
+
+#### Как запустить проект:
+ - После запуска **stage** инфраструктуры и playbooks приложение должно быть доступно по адресу **http://IPaddressOFApplication:80/**
+
+#### Как проверить работоспособность:
+ - Пересоздать **stage** инфраструктуру можно с помощью команд **terraform destroy** и **terraform apply -auto-approve=false**
+ - Проверку настройки **stage** окружения можно выполнить с помощью команд **ansible-playbook playbooks/site.yml --check** и **ansible-playbook playbooks/site.yml**
+ - Проверку настройки **prod** окружения можно выполнить с помощью команд **ansible-playbook -i environments/prod/inventory playbooks/site.yml --check** и **ansible-playbook -i environments/prod/inventory playbooks/site.yml**
+ - Проверку шифрования файлов для окружений **stage** и **prod** можно выполнить с помощью команд **ansible-vault encrypt environments/prod/credentials.yml** и **ansible-vault encrypt environments/stage/credentials.yml**
+ - Для проверки работы **dynamic inventory** в **stage** окружении нужно выполнить команду **ansible-playbook -i environments/stage/dynamic_inventory.sh playbooks/site.yml**
+ - Для проверки работы **dynamic inventory** в **prod** окружении нужно выполнить команду **ansible-playbook -i environments/prod/dynamic_inventory.sh playbooks/site.yml**
+ 
+#### PR checklist
+ - [x] Выставил label **Homework-11** с номером домашнего задания
+ - [x] Выставил label **Ansible** с номером домашнего задания

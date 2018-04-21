@@ -6,3 +6,5 @@
 .terraform/
 *.swp
 *.retry
+jdauphant.nginx
+vault.key
